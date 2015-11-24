@@ -57,6 +57,8 @@ function getWinner(playerMove,computerMove) {
     var playerMove = getPlayerMove();
     var computerMove = getComputerMove();
 
+    console.log('Player has chosen ' + playerMove + ' and Computer has chosen ' + computerMove + '.');
+
     if (playerMove === 'rock' && computerMove === 'scissors') {
         winner = "Player Wins!";
     }
@@ -92,20 +94,43 @@ function getWinner(playerMove,computerMove) {
     else {
         winner = "Tie!";
     }
-
+    alert(winner);
     return winner;
 }
 
-getWinner();
-
-//function playToFive() {
-//    console.log("Let's play Rock, Paper, Scissors");
-//    var playerWins = 0;
-//    var computerWins = 0;
+function playToFive(playerWins,computerWins) {
+    console.log("Let's play Rock, Paper, Scissors");
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
     /* YOUR CODE HERE */
-//    return [playerWins, computerWins];
-//}
+    for (var i = 0; playerWins < 5 && computerWins < 5; i += 1) {
+        
+        getWinner();
+        var Winner = getWinner();
+        
+        if (Winner === "Player Wins!") {
+            console.log('Player Wins!');
+            playerWins += 1;
+            alert('player wins = ' + playerWins + ' & computer wins = ' + computerWins);
+        }
+        else if (Winner === "Computer Wins!") {
+            console.log('Computer Wins!');
+            computerWins += 1;
+            alert('player wins = ' + playerWins + ' & computer wins = ' + computerWins);
+        }
+        else {
+            console.log('score remains the same!');
+        }
+}
+    if (playerWins === 5) {
+        console.log('Player Wins it all!');
+        return [playerWins, computerWins];
+    }
+    else if (computerWins === 5) {
+        console.log('Computer Wins it all');
+        return [playerWins, computerWins];
+    }
+}
+playToFive(0,0);
 
 // The code at the top gets an answer (rock, paper, or scissors).
 // The code in the middle makes sure we got valid answers (or loops back into above function if not).
